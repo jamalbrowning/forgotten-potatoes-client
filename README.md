@@ -1,1 +1,3 @@
-# forgotten-potatoes-client
+# Forgotten Potatoes Client
+
+## ERD
