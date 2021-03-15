@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import { Button, Form } from "react-bootstrap";
 
 export const Login = () => {
   const email = React.createRef();
@@ -26,7 +27,7 @@ export const Login = () => {
         if ("valid" in res && res.valid && "token" in res) {
           localStorage.setItem("fp_token", res.token);
           localStorage.setItem("fp_user_id", res.user_id);
-          history.push("/fp-signup");
+          history.push("/profile");
           window.location.reload();
         } else {
           invalidDialog.current.showModal();
@@ -46,7 +47,7 @@ export const Login = () => {
         </button>
       </dialog>
       <section className="login-section">
-        <form className="form--login" onSubmit={handleLogin}>
+        <Form className="form--login" onSubmit={handleLogin}>
           <h2>Please log in </h2>
           <fieldset>
             <input
@@ -74,11 +75,17 @@ export const Login = () => {
               textAlign: "center",
             }}
           >
-            <button className="login-button" type="submit">
+            <Button
+              className="login-button"
+              type="submit"
+              variant="primary"
+              size="lg"
+              block
+            >
               Login
-            </button>
+            </Button>
           </fieldset>
-        </form>
+        </Form>
       </section>
       <section>
         <Link to="/register" className="link--register">

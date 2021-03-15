@@ -4,6 +4,7 @@ import { Route } from "react-router-dom";
 import { ApplicationViews } from "./ApplicationViews";
 import { NavBar } from "./nav/Navbar";
 import { Login } from "./auth/Login";
+import { Register } from "./auth/Register";
 
 export const FP = () => (
   <>
@@ -18,5 +19,6 @@ export const FP = () => (
       }}
     />
     <Route path="/login" render={(props) => <Login {...props} />} />
+    <Route path="/register" render={(props) => <Register {...props} />} />
   </>
 );
