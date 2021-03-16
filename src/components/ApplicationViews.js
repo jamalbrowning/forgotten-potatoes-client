@@ -5,6 +5,8 @@ import { Reviews } from "./review/Reviews";
 import { SingleReview } from "./review/SingleReview";
 import { Profile } from "./profile/Profile";
 
+import { ProfileProvider } from "./profile/ProfileProvider";
+
 export const ApplicationViews = () => {
   return (
     <>
@@ -15,13 +17,17 @@ export const ApplicationViews = () => {
           return <Home history={props.history} />;
         }}
       />
-      <Route
-        exact
-        path="/profile"
-        render={(props) => {
-          return <Profile history={props.history} />;
-        }}
-      />
+
+      <ProfileProvider>
+        <Route
+          exact
+          path="/profile"
+          render={(props) => {
+            return <Profile history={props.history} />;
+          }}
+        />
+      </ProfileProvider>
+
       <Route
         exact
         path="/reviews"

@@ -11,18 +11,20 @@ export const NavBar = (props) => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav ">
           <Nav className="ml-auto navbar ">
-            <Nav.Link href="/reviews">Reviews</Nav.Link>
-            <Nav.Link href="#pricing">Profile</Nav.Link>
             {localStorage.getItem("fp_token") !== null ? (
-              <Nav.Link
-                className="nav-link fakeLink"
-                onClick={() => {
-                  localStorage.removeItem("fp_token");
-                  props.history.push({ pathname: "/" });
-                }}
-              >
-                Logout
-              </Nav.Link>
+              <Nav className="ml-auto">
+                <Nav.Link href="/reviews">Reviews</Nav.Link>
+                <Nav.Link href="#pricing">Profile</Nav.Link>
+                <Nav.Link
+                  className="nav-link fakeLink"
+                  onClick={() => {
+                    localStorage.removeItem("fp_token");
+                    props.history.push({ pathname: "/" });
+                  }}
+                >
+                  Logout
+                </Nav.Link>
+              </Nav>
             ) : (
               <Nav.Link href="/login">Login</Nav.Link>
             )}

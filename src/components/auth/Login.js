@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
+import "./auth.css";
 
 export const Login = () => {
   const email = React.createRef();
@@ -40,7 +41,7 @@ export const Login = () => {
       <dialog className="dialog dialog--auth" ref={invalidDialog}>
         <div>Email or password was not valid.</div>
         <button
-          className="button--close"
+          className="btn btn-danger button--close"
           onClick={(e) => invalidDialog.current.close()}
         >
           Close
@@ -75,15 +76,9 @@ export const Login = () => {
               textAlign: "center",
             }}
           >
-            <Button
-              className="login-button"
-              type="submit"
-              variant="primary"
-              size="lg"
-              block
-            >
-              Login
-            </Button>
+            <button className="btn btn-1 btn-sep icon-send" type="submit">
+              Sign In
+            </button>
           </fieldset>
         </Form>
       </section>
