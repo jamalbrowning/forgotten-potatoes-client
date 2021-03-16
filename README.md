@@ -11,3 +11,10 @@
 ![WireFrame](https://user-images.githubusercontent.com/62916291/110061300-007b1a00-7d2d-11eb-87c4-6bcad7b2f3fa.jpg)
 
 
+### Technologies
+- Tailwind Css
+- React.js
+- Python
+- Django Rest
+- Bootstrap
+- React-Bootstrap
