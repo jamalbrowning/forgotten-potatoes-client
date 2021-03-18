@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@craco/craco": "^6.1.1",
     "@fortawesome/fontawesome-free": "^5.15.2",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -42,7 +43,10 @@
     ]
   },
   "devDependencies": {
+    "@tailwindcss/postcss7-compat": "^2.0.3",
+    "autoprefixer": "^9.8.6",
     "eslint-config-airbnb-base": "^14.2.1",
-    "node-sass": "^5.0.0"
+    "node-sass": "^5.0.0",
+    "postcss": "^7.0.35"
   }
 }

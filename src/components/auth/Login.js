@@ -1,5 +1,7 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import { Button, Form, Modal } from "react-bootstrap";
+import "./auth.css";
 
 export const Login = () => {
   const email = React.createRef();
@@ -26,7 +28,7 @@ export const Login = () => {
         if ("valid" in res && res.valid && "token" in res) {
           localStorage.setItem("fp_token", res.token);
           localStorage.setItem("fp_user_id", res.user_id);
-          history.push("/fp-signup");
+          history.push("/profile");
           window.location.reload();
         } else {
           invalidDialog.current.showModal();
@@ -39,14 +41,14 @@ export const Login = () => {
       <dialog className="dialog dialog--auth" ref={invalidDialog}>
         <div>Email or password was not valid.</div>
         <button
-          className="button--close"
+          className="btn btn-danger button--close"
           onClick={(e) => invalidDialog.current.close()}
         >
           Close
         </button>
       </dialog>
       <section className="login-section">
-        <form className="form--login" onSubmit={handleLogin}>
+        <Form className="form--login" onSubmit={handleLogin}>
           <h2>Please log in </h2>
           <fieldset>
             <input
@@ -74,11 +76,11 @@ export const Login = () => {
               textAlign: "center",
             }}
           >
-            <button className="login-button" type="submit">
-              Login
+            <button className="btn btn-1 btn-sep icon-send" type="submit">
+              Sign In
             </button>
           </fieldset>
-        </form>
+        </Form>
       </section>
       <section>
         <Link to="/register" className="link--register">
