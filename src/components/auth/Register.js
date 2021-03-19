@@ -5,7 +5,6 @@ export const Register = (props) => {
   const firstName = React.createRef();
   const lastName = React.createRef();
   const email = React.createRef();
-  const bio = React.createRef();
   const password = React.createRef();
   const verifyPassword = React.createRef();
   const passwordDialog = React.createRef();
@@ -34,7 +33,7 @@ export const Register = (props) => {
         .then((res) => {
           if ("token" in res) {
             localStorage.setItem("fp_token", res.token);
-            props.history.push("/");
+            props.history.push("/login");
           }
         });
     } else {

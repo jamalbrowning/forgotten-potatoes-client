@@ -1,14 +1,11 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import { Button, Form, Modal } from "react-bootstrap";
-import "./auth.css";
+import { Link } from "react-router-dom";
 
-export const Login = () => {
+export const Login = (props) => {
   const email = React.createRef();
   const password = React.createRef();
   const invalidDialog = React.createRef();
-  const history = useHistory();
-
+ 
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -27,9 +24,10 @@ export const Login = () => {
       .then((res) => {
         if ("valid" in res && res.valid && "token" in res) {
           localStorage.setItem("fp_token", res.token);
-          localStorage.setItem("fp_user_id", res.user_id);
-          history.push("/profile");
-          window.location.reload();
+          localStorage.setItem("user_id", res.user_id);
+          
+          console.log(localStorage.getItem("user_id"));
+          props.history.push("/reviews");
         } else {
           invalidDialog.current.showModal();
         }
@@ -41,16 +39,18 @@ export const Login = () => {
       <dialog className="dialog dialog--auth" ref={invalidDialog}>
         <div>Email or password was not valid.</div>
         <button
-          className="btn btn-danger button--close"
+          className="button--close"
           onClick={(e) => invalidDialog.current.close()}
         >
           Close
         </button>
       </dialog>
-      <section className="login-section">
-        <Form className="form--login" onSubmit={handleLogin}>
-          <h2>Please log in </h2>
+      <section>
+        <form className="form--login" onSubmit={handleLogin}>
+          <h1>Level Up</h1>
+          <h2>Please sign in</h2>
           <fieldset>
+            <label htmlFor="inputEmail"> Email address </label>
             <input
               ref={email}
               type="email"
@@ -62,6 +62,7 @@ export const Login = () => {
             />
           </fieldset>
           <fieldset>
+            <label htmlFor="inputPassword"> Password </label>
             <input
               ref={password}
               type="password"
@@ -80,12 +81,10 @@ export const Login = () => {
               Sign In
             </button>
           </fieldset>
-        </Form>
+        </form>
       </section>
-      <section>
-        <Link to="/register" className="link--register">
-          Don't Have an account? Click to register.
-        </Link>
+      <section className="link--register">
+        <Link to="/register">Not a member yet?</Link>
       </section>
     </main>
   );

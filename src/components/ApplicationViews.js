@@ -23,7 +23,7 @@ export const ApplicationViews = () => {
           exact
           path="/profile"
           render={(props) => {
-            return <Profile history={props.history} />;
+            return <Profile {...props} history={props.history} />;
           }}
         />
       </ProfileProvider>
