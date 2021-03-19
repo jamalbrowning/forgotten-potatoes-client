@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export const ProfileContext = React.createContext();
 
 export const ProfileProvider = (props) => {
-  const [review, setReview] = useState({});
+  const [reviews, setReviews] = useState({});
 
   const getReviewsByUserId = (id) => {
     return fetch(`http://localhost:8000/reviews?user=${id}`, {
@@ -12,11 +12,13 @@ export const ProfileProvider = (props) => {
       },
     })
       .then((response) => response.json())
-      .then(setReview);
+      .then(setReviews);
   };
+  console.log("more", reviews);
   return (
     <ProfileContext.Provider
       value={{
+        reviews,
         getReviewsByUserId,
       }}
     >

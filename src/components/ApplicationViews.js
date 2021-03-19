@@ -6,6 +6,7 @@ import { SingleReview } from "./review/SingleReview";
 import { Profile } from "./profile/Profile";
 
 import { ProfileProvider } from "./profile/ProfileProvider";
+import { ReviewProvider } from "./review/ReviewProvider";
 
 export const ApplicationViews = () => {
   return (
@@ -23,16 +24,16 @@ export const ApplicationViews = () => {
           exact
           path="/profile"
           render={(props) => {
-            return <Profile history={props.history} />;
+            return <Profile {...props} history={props.history} />;
           }}
         />
       </ProfileProvider>
-
+      <ReviewProvider>
       <Route
         exact
         path="/reviews"
         render={(props) => {
-          return <Reviews history={props.history} />;
+          return <Reviews {...props} history={props.history} />;
         }}
       />
       <Route
@@ -42,6 +43,8 @@ export const ApplicationViews = () => {
           return <SingleReview history={props.history} />;
         }}
       />
+      </ReviewProvider>
+      
     </>
   );
 };

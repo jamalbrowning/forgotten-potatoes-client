@@ -14,7 +14,7 @@ export const NavBar = (props) => {
             {localStorage.getItem("fp_token") !== null ? (
               <Nav className="ml-auto">
                 <Nav.Link href="/reviews">Reviews</Nav.Link>
-                <Nav.Link href="#pricing">Profile</Nav.Link>
+                <Nav.Link href="/profile">Profile</Nav.Link>
                 <Nav.Link
                   className="nav-link fakeLink"
                   onClick={() => {
