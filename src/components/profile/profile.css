@@ -1,0 +1,12 @@
+.review-container{
+ 
+  display: grid;
+  place-items: center;
+  
+}
+.preview-container{
+  width: 400px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
