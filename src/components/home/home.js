@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
-import { Button, Form, Modal } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 export const Home = () => {
   const email = React.createRef();
