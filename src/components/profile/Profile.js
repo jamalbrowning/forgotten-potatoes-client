@@ -43,7 +43,7 @@ export const Profile = (props) => {
           </tbody>
         </Table>
         <Button href="/new-review">New Review</Button>
-        <Button href="/reviews">hello</Button>
+        <Button href="/reviews">Reviews</Button>
       </div>
     </div>
   );
