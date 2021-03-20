@@ -7,7 +7,7 @@ export const ReviewProvider = (props) => {
   const [ review, setReview ] = useState({})
 
   const getReviews = () => {
-    return fetch('http://localhost:8000/reviewss',{
+    return fetch('http://localhost:8000/reviews',{
         headers:{
         "Authorization": `Token ${localStorage.getItem("fp_token")}`
         }
@@ -58,11 +58,18 @@ export const ReviewProvider = (props) => {
 }
 
 const getReviewById = (id) => {
-  return fetch(`http://localhost:8000/reviews/${id}`)
-      .then(res => res.json())
+  return fetch(`http://localhost:8000/reviews/${id}`, {
+    headers: {
+      "Authorization": `Token ${localStorage.getItem("fp_token")}`
+    }
+  })
+    .then((res) => res.json())
+    // .catch(error => {
+    //   console.log(error);
+    // }); 
 }
 
-  console.log("more", reviews);
+  console.log("more", getReviewById(1));
   return (
     <ReviewContext.Provider
       value={{
@@ -72,7 +79,7 @@ const getReviewById = (id) => {
         createReview,
         updateReview,
         deleteReview,
-        getReviewById
+        getReviewById,
       }}
     >
       {props.children}

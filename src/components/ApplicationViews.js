@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import { Home } from "./home/home";
 import { Reviews } from "./review/Reviews";
 import { SingleReview } from "./review/SingleReview";
@@ -20,30 +20,40 @@ export const ApplicationViews = () => {
       />
 
       <ProfileProvider>
+          <Route
+            exact
+            path="/profile"
+            render={(props) => {
+              return <Profile {...props} history={props.history} />;
+            }}
+          />
+      
+
+        <ReviewProvider>
         <Route
           exact
-          path="/profile"
+          path="/new-review"
           render={(props) => {
-            return <Profile {...props} history={props.history} />;
+            return <ReviewForm {...props} history={props.history} />;
           }}
         />
+        <Route
+          exact
+          path="/reviews"
+          render={(props) => {
+            return <Reviews {...props} history={props.history} />;
+          }}
+        />
+        <Route
+          exact
+          path="/reviews/:reviewId"
+          render={(props) => {
+            return <SingleReview {...props} history={props.history} />;
+          }}
+        />
+        </ReviewProvider>
       </ProfileProvider>
-      <ReviewProvider>
-      <Route
-        exact
-        path="/reviews"
-        render={(props) => {
-          return <Reviews {...props} history={props.history} />;
-        }}
-      />
-      <Route
-        exact
-        path="/singlereview"
-        render={(props) => {
-          return <SingleReview history={props.history} />;
-        }}
-      />
-      </ReviewProvider>
+      
       
     </>
   );
