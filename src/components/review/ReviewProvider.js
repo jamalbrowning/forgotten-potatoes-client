@@ -63,10 +63,10 @@ const getReviewById = (id) => {
       "Authorization": `Token ${localStorage.getItem("fp_token")}`
     }
   })
-    .then(res => console.log("res",res))
-    .then(response => response.json())
-    
-  
+    .then((res) => res.json())
+    // .catch(error => {
+    //   console.log(error);
+    // }); 
 }
 
   console.log("more", getReviewById(1));

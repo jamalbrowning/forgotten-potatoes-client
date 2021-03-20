@@ -32,6 +32,13 @@ export const ApplicationViews = () => {
         <ReviewProvider>
         <Route
           exact
+          path="/new-review"
+          render={(props) => {
+            return <ReviewForm {...props} history={props.history} />;
+          }}
+        />
+        <Route
+          exact
           path="/reviews"
           render={(props) => {
             return <Reviews {...props} history={props.history} />;
