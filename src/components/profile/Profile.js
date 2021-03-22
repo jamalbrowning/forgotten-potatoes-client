@@ -30,7 +30,7 @@ export const Profile = (props) => {
             {reviews && reviews.length > 0 ? (
               reviews.map((review) => (
                 <tr>
-                  <td ><Link to={`/reviews/${review.id}`}>{review.menu_item_id.menu.rest_id.name} </Link></td>
+                  <td ><Link to={`/reviews/${review.id}`}>{review.menu_item_id.restaurant.name} </Link></td>
                   <td>{review.menu_item_id.name}</td>
                   <td>
                     {review.rating}/5 <FaStar size="1rem" />{" "}
@@ -42,7 +42,7 @@ export const Profile = (props) => {
             )}
           </tbody>
         </Table>
-        <Button href="/new-review">New Review</Button>
+        <Button href="/review/restaurants">New Review</Button>
         <Button href="/reviews">Reviews</Button>
       </div>
     </div>

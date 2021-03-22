@@ -1,12 +1,18 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { Home } from "./home/home";
-import { Reviews } from "./review/Reviews";
-import { SingleReview } from "./review/SingleReview";
+
 import { Profile } from "./profile/Profile";
 
 import { ProfileProvider } from "./profile/ProfileProvider";
+
 import { ReviewProvider } from "./review/ReviewProvider";
+import { Reviews } from "./review/Reviews";
+import { SingleReview } from "./review/SingleReview";
+import { ReviewRestaurants } from "./review/ReviewRestaurants"
+import { ReviewMenuItems } from "./review/ReviewMenuItems"
+import { ReviewForm } from "./review/ReviewForm";
+import { Review } from "./review/Review"
 
 export const ApplicationViews = () => {
   return (
@@ -30,27 +36,54 @@ export const ApplicationViews = () => {
       
 
         <ReviewProvider>
-        <Route
-          exact
-          path="/new-review"
+
+            <Route 
+            exact path="/review/menuitem/:menuitemId"
+            render={(props) => {
+              return <Review {...props} />
+            }} />
+            <Route 
+            exact path="/reviews/:reviewId(\d+)/edit"
+            render={(props) => {
+              return <Review {...props} />
+            }}
+            />
+
+
+          <Route 
+          exact path="/review/restaurants"
           render={(props) => {
-            return <ReviewForm {...props} history={props.history} />;
-          }}
-        />
-        <Route
-          exact
-          path="/reviews"
+            return <ReviewRestaurants {...props} />
+          }}/>
+
+          <Route 
+          exact path="/review/restaurants/:restaurantId"
           render={(props) => {
-            return <Reviews {...props} history={props.history} />;
-          }}
-        />
-        <Route
-          exact
-          path="/reviews/:reviewId"
-          render={(props) => {
-            return <SingleReview {...props} history={props.history} />;
-          }}
-        />
+            return <ReviewMenuItems {...props} />
+          }}/>
+      
+         
+          <Route
+            exact
+            path="/new-review"
+            render= {(props) => {
+              return <ReviewForm {...props}  />;
+            }}
+          />
+          <Route
+            exact
+            path="/reviews"
+            render={(props) => {
+              return <Reviews {...props} />;
+            }}
+          />
+          <Route
+            exact
+            path="/reviews/:reviewId"
+            render={(props) => {
+              return <SingleReview {...props} />;
+            }}
+          />
         </ReviewProvider>
       </ProfileProvider>
       
