@@ -4,7 +4,7 @@ import { ReviewContext } from "./ReviewProvider"
 import { Card, Button } from "react-bootstrap"
 import { FaStar } from "react-icons/fa"
 export const Reviews = (props) => {
-  const {reviews, getReviewsByUserId } = useContext(ReviewContext);
+  const {reviews, getReviewsByUserId, deleteReview } = useContext(ReviewContext);
  
 
 
@@ -28,6 +28,7 @@ export const Reviews = (props) => {
                   <Card.Text>{review.comment}</Card.Text>
                   <Card.Text>{review.rating}/5 <FaStar size="1rem"></FaStar></Card.Text>
                   <Button onClick={e => props.history.push(`/reviews/${review.id}/edit`)}> Edit </Button>
+                  <Button onClick={() => deleteReview(review.id)}>Delete</Button>
                 </Card.Body>
               </Card>
               </div>
