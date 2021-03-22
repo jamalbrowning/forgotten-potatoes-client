@@ -8,6 +8,7 @@ export const ReviewProvider = (props) => {
   const [restaurants, setRestaurants] = useState({});
   const [restaurant, setRestaurant] = useState({});
   const [ menuItems, setMenuItems ] = useState({});
+  const [menuItem, setMenuItem ] = useState({})
 
   const getReviews = () => {
     return fetch("http://localhost:8000/reviews", {
@@ -108,6 +109,16 @@ export const ReviewProvider = (props) => {
       .then(setMenuItems);
   };
 
+  const getMenuItemById = (id) => {
+    return fetch(`http://localhost:8000/menuitems/${id}`, {
+      headers: {
+        Authorization: `Token ${localStorage.getItem("fp_token")}`,
+      },
+    }).then((res) => res.json()); 
+    
+  }
+
+
   
   return (
     <ReviewContext.Provider
@@ -117,6 +128,8 @@ export const ReviewProvider = (props) => {
         restaurant,
         restaurants,
         menuItems,
+        menuItem,
+        getMenuItemById,
         getMenuItems,
         getRestaurants,
         getRestbyId,
