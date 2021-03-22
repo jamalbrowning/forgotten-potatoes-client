@@ -34,7 +34,7 @@ export const ReviewProvider = (props) => {
     return fetch("http://localhost:8000/reviews", {
       method: "POST",
       headers: {
-        Authorization: `Token ${localStorage.getItem("fp_token")}`,
+        "Authorization": `Token ${localStorage.getItem("fp_token")}`,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
@@ -44,15 +44,21 @@ export const ReviewProvider = (props) => {
       .then(getReviews);
   };
 
-  const updateReview = (review) => {
+  const updateReview = review => {
+    console.log('here is the update review', review)
     return fetch(`http://localhost:8000/reviews/${review.id}`, {
       method: "PUT",
       headers: {
+        "Authorization": `Token ${localStorage.getItem("fp_token")}`,
         "Content-Type": "application/json",
       },
+      
       body: JSON.stringify(review),
-    }).then(getReviews);
+    })
+    
+    .then(getReviews);
   };
+  
   const deleteReview = (id) => {
     return fetch(`http://localhost:8000/reviews/${id}`, {
       method: "DELETE",

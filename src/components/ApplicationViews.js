@@ -42,6 +42,13 @@ export const ApplicationViews = () => {
             render={(props) => {
               return <Review {...props} />
             }} />
+            <Route 
+            exact path="/reviews/:reviewId(\d+)/edit"
+            render={(props) => {
+              return <Review {...props} />
+            }}
+            />
+
 
           <Route 
           exact path="/review/restaurants"

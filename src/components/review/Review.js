@@ -4,7 +4,7 @@ import { ReviewContext } from "./ReviewProvider"
 
 export const Review = (props) => {
   console.log('props', props)
-  const { getMenuItemById, createReview } = useContext(ReviewContext)
+  const { getMenuItemById, createReview, getReviewById, updateReview } = useContext(ReviewContext)
   const [ menuItem, setMenuItem ] = useState({})
   
   const [currentReview, setCurrentReview] = useState({
@@ -16,17 +16,31 @@ export const Review = (props) => {
   
 
   
-  const handleControlledInputChange = (e) => {
-    const newReviewState = Object.assign({}, currentReview);
-    newReviewState[e.target.name] = e.target.value;
-    setCurrentReview(newReviewState);
-  };
+  useEffect(() =>{
+    if ("reviewId" in props.match.params) {
+      getReviewById(props.match.params.reviewId).then(review => {
+        setCurrentReview({
+          id: props.match.params.reviewId,
+          user: review.user,
+          rating: review.rating,
+          comment: review.comment,
+          menu_item_id: review.menu_item_id
+        })
+      })
+    }
+  }, [props.match.params.reviewId])
 
   useEffect(() => {
     const { menuitemId } = props.match.params
     getMenuItemById(menuitemId)
     .then(setMenuItem)
   }, []);
+
+  const handleControlledInputChange = (e) => {
+    const newReviewState = Object.assign({}, currentReview);
+    newReviewState[e.target.name] = e.target.value;
+    setCurrentReview(newReviewState);
+  };
 
   
 
@@ -59,18 +73,36 @@ export const Review = (props) => {
                     />
                 </div>
             </fieldset>
-            <button type="submit"
-                onClick={evt => {
-                    evt.preventDefault()
-
-                    createReview({
-                      user: localStorage.getItem("user_id"),
-                      rating: currentReview.rating,
-                      comment: currentReview.comment,
-                      menu_item_id: menuItem.id
-                    })
-                }}
-                className="btn btn-primary">Create Event</button>
+            {
+                ("reviewId" in props.match.params)
+                    ? <button
+                        onClick={evt => {
+                            evt.preventDefault()
+                            updateReview({
+                                id: parseInt(props.match.params.reviewId),
+                                rating: parseInt(currentReview.rating),
+                                comment: currentReview.comment,
+                                menu_item_id: currentReview.menu_item_id.id,
+                                user: parseInt(localStorage.getItem("user_id"))
+                            })
+                            .then(() => props.history.push("/reviews"))
+                        }}
+                        className="btn btn-primary">Update</button>
+                    : <button type="submit"
+                    onClick={evt => {
+                        evt.preventDefault()
+    
+                        createReview({
+                          user: localStorage.getItem("user_id"),
+                          rating: currentReview.rating,
+                          comment: currentReview.comment,
+                          menu_item_id: menuItem.id
+                        })
+                        .then(() => props.history.push("/reviews"))
+                    }}
+                    className="btn btn-primary">Submit</button>
+            }
+            
     </form>
   </div>)
 }
