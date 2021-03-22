@@ -23,21 +23,13 @@ export const Reviews = (props) => {
 
               <Card className="text-center">
                 <Card.Body>
-                  <Card.Title>{review.menu_item_id.menu.rest_id.name}</Card.Title>
+                  <Card.Title>{review.menu_item_id.restaurant.name}</Card.Title>
                   <Card.Text>{review.menu_item_id.name}</Card.Text>
                   <Card.Text>{review.rating}/5 <FaStar size="1rem"></FaStar></Card.Text>
                 </Card.Body>
               </Card>
-                  {/* <td ><Link to={`/singlereview/${review.id}`}>{ </Link></td>
-                  <td></td>
-                  <td>
-                    {review.rating}/5 <FaStar size="1rem" />{" "}
-                  </td> */}
               </div>
-              ))
-            ) : (
-              <h1>You haven't written any reviews.</h1>
-            )}
+              ))) : (<h1>You haven't written any reviews.</h1>)}
         </div>
       </div>
   ) 

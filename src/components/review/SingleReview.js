@@ -30,14 +30,13 @@ export const SingleReview = (props) => {
     
     getReviewById(reviewId)
     .then(setReview)
-  }, [props.match.params.reviewId])
-  console.log(review)
-
+  }, [])
+  
   return <div className="review-container">
   {review && review ? 
   <div>
   <Card className="text-center">
-  {review && review.menu_item_id ? <Card.Header>{review.menu_item_id.menu.rest_id.name}</Card.Header>: ''}
+  {review && review.menu_item_id ? <Card.Header>{review.menu_item_id.restaurant.name}</Card.Header>: ''}
   <Card.Body>
    {review && review.menu_item_id ? <Card.Title>{review.menu_item_id.name}</Card.Title> : ''}
     {review && review.comment  ? <Card.Text>
