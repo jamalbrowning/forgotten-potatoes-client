@@ -60,8 +60,8 @@ export const Login = (props) => {
               id="email"
               className="form-control"
               placeholder="Email address"
-              required
-              autoFocus
+              // required
+              // autoFocus
             />
           </fieldset>
           <fieldset>
@@ -84,10 +84,12 @@ export const Login = (props) => {
               Sign In
             </button>
           </fieldset>
-          <button className="btn btn-dark link--register text-center" to="/register">
-        Not a member yet?
-      </button>
+          <section className="link--register">
+        Not registered? <Link to="/register">Sign up</Link>
+      </section>
         </form>
+       
+        
       </section>
       
     </main>

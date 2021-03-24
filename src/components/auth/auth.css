@@ -18,11 +18,12 @@ fieldset {
   margin: 5rem auto;
   text-align: center;
   padding-top: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .form--login > fieldset > input[type="email"],
 .form--login > fieldset > input[type="password"] {
-  width: 25em;
+  width: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,16 +62,16 @@ fieldset {
 
 .dialog {
   height: 10rem;
-  width: 25rem;
+  width: 20rem;
   border: 1px solid gray;
   border-radius: 5px;
 }
 .sign-in{
-  width: 25rem;
+  width: 20rem;
 }
 
 .link--register{
-  width: 25rem; 
+  width: 20rem; 
 }
 
 .link--register:hover{
@@ -79,17 +80,12 @@ fieldset {
 
 main{
 
-background:
-linear-gradient(
-  rgba(0, 0, 0, 0.45), 
-  rgba(0, 0, 0, 0.45)
-), 
-url("/Users/jamalbrowning/workspace/projects/personal/forgotten-potatoes/forgotten-potatoes-client/src/components/auth/login.jpg");;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.548), rgb(212, 212, 212));
 
   
   color: rgb(0, 0, 0);
 
-  background-size: cover;
+  background-size:auto;
   height: 50rem;
   display: flex;
   justify-content: center;
@@ -98,8 +94,8 @@ url("/Users/jamalbrowning/workspace/projects/personal/forgotten-potatoes/forgott
 
 form {
   padding-top: 100rem;
-  height: 30rem;
-  width: 30rem;
+  height: 25rem;
+  width: 25rem;
   background-color:rgba(255, 255, 255, 0.6);;
   display: flex;
   justify-content: center;
@@ -107,7 +103,6 @@ form {
 }
 
 .welcome{
-  color: white;
+  color: rgb(0, 0, 0);
+  font-family: 'Anton', sans-serif;
 }
-
-

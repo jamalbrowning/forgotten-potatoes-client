@@ -38,3 +38,12 @@ height: 3rem;
   height: 2remrem;
   margin: 10px;
 }
+
+.profile-header{
+  font-weight: 300px;
+  margin-top: 20px;
+}
+
+.card-header p{
+  margin: 0 auto;
+}

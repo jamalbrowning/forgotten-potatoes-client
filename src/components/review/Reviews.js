@@ -7,34 +7,45 @@ import { Fab } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import EditIcon from "@material-ui/icons/Edit";
 import Tooltip from '@material-ui/core/Tooltip';
+import DeleteIcon from '@material-ui/icons/Delete';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import "./review.css";
 
 export const Reviews = (props) => {
-  const { reviews, getReviewsByUserId } = useContext(ReviewContext);
-
+  const {reviews, getReviewsByUserId, deleteReview } = useContext(ReviewContext)
+ 
+  
   useEffect(() => {
     const userId = localStorage.getItem("user_id");
     getReviewsByUserId(userId);
   }, []);
 
   return (
-    <div><div></div>
-      <div className="add-container">
-      <Tooltip title="Add Review" aria-label="add">
-        <Fab size="small" href="/review/restaurants" color="primary" aria-label="add">
-          <AddIcon />
-        </Fab>
-      </Tooltip>
-      </div>
+    <div>
+      
       <div className="review-container">
+      <div className="add-container">
+        
+        <Tooltip title="Add Review" aria-label="add">
+          <Fab size="small" href="/review/restaurants" color="primary" aria-label="add">
+            <AddIcon />
+          </Fab>
+        </Tooltip>
+        <Tooltip title="back" aria-label="back">
+          <Fab size="small" href="/profile" color="primary" aria-label="add">
+          <ArrowBackIcon />
+          </Fab>
+        </Tooltip>
+        
+        </div>
         <div className="review-body">
           {reviews && reviews.length > 0 ? (
             reviews.map((review) => (
               <div>
                 <Card className="text-center">
                   <Card.Body>
-                    <Card.Title>
+                    <Card.Title className="review-page">
                       {review.menu_item_id.restaurant.name}
                     </Card.Title>
                     <Card.Text>{review.menu_item_id.name}</Card.Text>
@@ -42,6 +53,7 @@ export const Reviews = (props) => {
                     <Card.Text>
                       {review.rating}/5 <FaStar size="1rem"></FaStar>
                     </Card.Text>
+                    <div className="bottom-icons">
                     <Tooltip title="Edit Review" aria-label="edit">
                     <Fab
                       onClick={(e) =>
@@ -49,12 +61,18 @@ export const Reviews = (props) => {
                       }
                       color="secondary"
                       aria-label="edit"
+                      size="small"
                     >
                       <EditIcon />
                     </Fab>
                     </Tooltip>
+                    <Fab size="small" onClick={() => deleteReview(review.id)}>
+                      <DeleteIcon />
+                    </Fab>
+                    </div>
                   </Card.Body>
                 </Card>
+                
               </div>
             ))
           ) : (

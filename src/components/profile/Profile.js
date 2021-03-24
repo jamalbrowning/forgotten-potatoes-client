@@ -20,7 +20,7 @@ export const Profile = (props) => {
   return (
     <div className="review-container text-center">
         {/* <Button href="/reviews">Reviews</Button> */}
-        <h3 className="text-center">Recent Reviews</h3>
+        <h3 className="text-center profile-header">Recent Reviews</h3>
       <div className="preview-container">
         
 
@@ -28,7 +28,7 @@ export const Profile = (props) => {
               reviews.map((review) => (
                 <Card className="profile-card">
                   <Card.Header className="header"><p>{review.menu_item_id.restaurant.name}</p>
-                  <Button>< PageviewIcon style={{ fontSize: 30 }}to={`/reviews/${review.id}`}/></Button>
+                  <Button >< PageviewIcon style={{ fontSize: 30 }}to={`/reviews/${review.id}`}/></Button>
                   </Card.Header>
                   <Card.Body className="profile-card-body">
                     <Card.Title>{review.menu_item_id.name}</Card.Title>

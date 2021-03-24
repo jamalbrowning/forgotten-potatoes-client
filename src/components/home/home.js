@@ -83,9 +83,9 @@ export const Home = (props) => {
               Sign In
             </button>
           </fieldset>
-          <button className="btn btn-dark link--register text-center" to="/register">
-        Not a member yet?
-      </button>
+          <section className="link--register">
+        Not registered? <Link to="/register">Sign up</Link>
+      </section>
         </form>
       </section>
       

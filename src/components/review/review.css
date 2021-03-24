@@ -11,10 +11,30 @@
 }
 .card{
   margin: 10px 10px;
+  width: 300px;
+  
 }
 .add-container{
   /* display: grid;
   place-items: center; */
   gap: 10%;
   margin: 10px
+}
+.review-page{
+  background-color: rgb(59, 59, 59);
+  color: aliceblue;
+}
+.card-body{
+  padding: 0 !important;
+}
+.add-container{
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 10px;
+}
+.bottom-icons{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
 }
