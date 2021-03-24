@@ -38,3 +38,42 @@
   justify-content: space-evenly;
   margin-bottom: 10px;
 }
+.review-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-group-rating{
+  width: 20rem;
+}
+.form-group-comment{
+  width: 20rem;
+}
+
+.menuitem-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu-items{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.button-menu-item{
+  width: 25rem;
+  margin: 5px !important;
+}
+
+.form-control-comment{
+  height: 20rem;
+  width: 20rem;
+}

@@ -27,6 +27,7 @@ fieldset {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .label--login {
@@ -92,14 +93,15 @@ main{
   align-items: center;
 }
 
-form {
-  padding-top: 100rem;
+.login-form {
+  /* padding-top: 10rem; */
   height: 25rem;
   width: 25rem;
   background-color:rgba(255, 255, 255, 0.6);;
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .welcome{

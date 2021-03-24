@@ -5,6 +5,10 @@ import { Card } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
 import PageviewIcon from '@material-ui/icons/Pageview';
 import Button from '@material-ui/core/Button';
+import AddIcon from "@material-ui/icons/Add";
+import { Fab } from "@material-ui/core";
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 
 
@@ -28,10 +32,10 @@ export const Profile = (props) => {
               reviews.map((review) => (
                 <Card className="profile-card">
                   <Card.Header className="header"><p>{review.menu_item_id.restaurant.name}</p>
-                  <Button >< PageviewIcon style={{ fontSize: 30 }}to={`/reviews/${review.id}`}/></Button>
+                  <Button href={`/reviews/${review.id}`}>< PageviewIcon style={{ fontSize: 30 }}/></Button>
                   </Card.Header>
                   <Card.Body className="profile-card-body">
-                    <Card.Title>{review.menu_item_id.name}</Card.Title>
+                    <Card.Title><p className="profile-review-menu-name">{review.menu_item_id.name}</p></Card.Title>
                     <Card.Text>
                     {review.rating}/5 <FaStar size="1rem" />{" "}
                     </Card.Text>
@@ -48,7 +52,17 @@ export const Profile = (props) => {
                 // </tr>
               ))
             ) : (
-              <tr>You haven't written any reviews.</tr>
+              
+              <div>
+                <p>You haven't written any reviews.</p>
+                <p>Please add a review.</p>
+                <Tooltip title="Add Review" aria-label="add">
+          <Fab size="small" href="/review/restaurants" color="primary" aria-label="add">
+            <AddIcon />
+          </Fab>
+        </Tooltip>
+              </div>
+              
             )}
         
       </div>

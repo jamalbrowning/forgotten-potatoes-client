@@ -13,13 +13,19 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import "./review.css";
 
 export const Reviews = (props) => {
-  const {reviews, getReviewsByUserId, deleteReview } = useContext(ReviewContext)
+  const {reviews, getReviewsByUserId } = useContext(ReviewContext)
  
   
   useEffect(() => {
     const userId = localStorage.getItem("user_id");
     getReviewsByUserId(userId);
   }, []);
+
+  const deleteReviewNow = (id) => {
+    return fetch(`http://localhost:8000/reviews/${id}`, {
+      method: "DELETE",
+    }).then(window.location.reload());
+  };
 
   return (
     <div>
@@ -66,7 +72,7 @@ export const Reviews = (props) => {
                       <EditIcon />
                     </Fab>
                     </Tooltip>
-                    <Fab size="small" onClick={() => deleteReview(review.id)}>
+                    <Fab size="small" onClick={() => deleteReviewNow(review.id)}>
                       <DeleteIcon />
                     </Fab>
                     </div>

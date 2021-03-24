@@ -3,6 +3,11 @@ import { ReviewContext } from "./ReviewProvider";
 import { UserContext } from "../users/UserProvider"
 import { Card , Button} from "react-bootstrap"
 import { FaStar } from "react-icons/fa"
+import EditIcon from "@material-ui/icons/Edit";
+import { Fab } from "@material-ui/core";
+import Tooltip from '@material-ui/core/Tooltip';
+
+
 
 
 export const SingleReview = (props) => {
@@ -40,9 +45,24 @@ export const SingleReview = (props) => {
   <Card.Body>
    {review && review.menu_item_id ? <Card.Title>{review.menu_item_id.name}</Card.Title> : ''}
     {review && review.comment  ? <Card.Text>
-      {review && review.comment}
+      <p>{review && review.comment}</p>
+      <p>{review && review.rating}/5<FaStar/></p>
+      
     </Card.Text> : ''}
-    <Button href={`/reviews/${review.id}/edit`} variant="primary">Update Review</Button>
+
+
+    <Tooltip title="Edit Review" aria-label="edit">
+                    <Fab
+                      onClick={(e) =>
+                        props.history.push(`/reviews/${review.id}/edit`)
+                      }
+                      color="secondary"
+                      aria-label="edit"
+                      size="small"
+                    >
+                      <EditIcon />
+                    </Fab>
+                    </Tooltip>
   </Card.Body>
   
 </Card> </div>: ''}

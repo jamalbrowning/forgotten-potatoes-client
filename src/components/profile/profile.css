@@ -47,3 +47,7 @@ height: 3rem;
 .card-header p{
   margin: 0 auto;
 }
+
+.profile-review-menu-name{
+  font-size: medium;
+}
