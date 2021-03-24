@@ -3,12 +3,38 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   
 }
 .preview-container{
   width: 400px;
   margin: 0 auto;
   padding-top: 20px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  /* display: grid;
+  place-items: center; */
+}
+
+.header{
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+height: 3rem;
+}
+.profile-card-body{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.header Button {
+  margin-bottom: 1rem;
+}
+
+.profile-card {
+  width: 20rem;
+  height: 2remrem;
+  margin: 10px;
 }

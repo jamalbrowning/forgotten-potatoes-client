@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "./auth.css"
 
 export const Login = (props) => {
   const email = React.createRef();
@@ -27,7 +28,7 @@ export const Login = (props) => {
           localStorage.setItem("user_id", res.user_id);
           
           console.log(localStorage.getItem("user_id"));
-          props.history.push("/reviews");
+          props.history.push("/profile");
         } else {
           invalidDialog.current.showModal();
         }
@@ -35,7 +36,8 @@ export const Login = (props) => {
   };
 
   return (
-    <main className="container--login">
+    
+       <main className="container--login">
       <dialog className="dialog dialog--auth" ref={invalidDialog}>
         <div>Email or password was not valid.</div>
         <button
@@ -46,11 +48,12 @@ export const Login = (props) => {
         </button>
       </dialog>
       <section>
-        <form className="form--login" onSubmit={handleLogin}>
-          <h1>Level Up</h1>
-          <h2>Please sign in</h2>
+      <h2 className="welcome">Welcome to Forgotten Potatoes</h2>
+        <form className="form--login text-center login-form" onSubmit={handleLogin}>
+          
+        <h3>Login</h3>
           <fieldset>
-            <label htmlFor="inputEmail"> Email address </label>
+            {/* <label htmlFor="inputEmail"> Email address </label> */}
             <input
               ref={email}
               type="email"
@@ -62,7 +65,7 @@ export const Login = (props) => {
             />
           </fieldset>
           <fieldset>
-            <label htmlFor="inputPassword"> Password </label>
+            {/* <label htmlFor="inputPassword"> Password </label> */}
             <input
               ref={password}
               type="password"
@@ -77,15 +80,18 @@ export const Login = (props) => {
               textAlign: "center",
             }}
           >
-            <button className="btn btn-1 btn-sep icon-send" type="submit">
+            <button className="sign-in btn btn-primary" type="submit">
               Sign In
             </button>
           </fieldset>
+          <button className="btn btn-dark link--register text-center" to="/register">
+        Not a member yet?
+      </button>
         </form>
       </section>
-      <section className="link--register">
-        <Link to="/register">Not a member yet?</Link>
-      </section>
+      
     </main>
+    
+   
   );
 };

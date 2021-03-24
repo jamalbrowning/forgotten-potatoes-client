@@ -1,9 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import "./profile.css";
 import { ProfileContext } from "./ProfileProvider";
-import { Table, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
-import { Link } from 'react-router-dom'
+import PageviewIcon from '@material-ui/icons/Pageview';
+import Button from '@material-ui/core/Button';
+
+
+
 
 export const Profile = (props) => {
   const { reviews, getReviewsByUserId } = useContext(ProfileContext);
@@ -14,36 +18,39 @@ export const Profile = (props) => {
   }, []);
 
   return (
-    <div className="review-container">
-      <div className="preview-container">
+    <div className="review-container text-center">
+        {/* <Button href="/reviews">Reviews</Button> */}
         <h3 className="text-center">Recent Reviews</h3>
-        <Table striped border hover variant="dark">
-          <thead>
-            <tr>
-              <th>Restaurant</th>
-              <th>Menu Item</th>
-              <th>Rating</th>
-            </tr>
-          </thead>
+      <div className="preview-container">
+        
 
-          <tbody>
             {reviews && reviews.length > 0 ? (
               reviews.map((review) => (
-                <tr>
-                  <td ><Link to={`/reviews/${review.id}`}>{review.menu_item_id.restaurant.name} </Link></td>
-                  <td>{review.menu_item_id.name}</td>
-                  <td>
+                <Card className="profile-card">
+                  <Card.Header className="header"><p>{review.menu_item_id.restaurant.name}</p>
+                  <Button>< PageviewIcon style={{ fontSize: 30 }}to={`/reviews/${review.id}`}/></Button>
+                  </Card.Header>
+                  <Card.Body className="profile-card-body">
+                    <Card.Title>{review.menu_item_id.name}</Card.Title>
+                    <Card.Text>
                     {review.rating}/5 <FaStar size="1rem" />{" "}
-                  </td>
-                </tr>
+                    </Card.Text>
+                    
+                  </Card.Body>
+                </Card>
+
+                // <tr>
+                //   <td ><Link to={`/reviews/${review.id}`}>{review.menu_item_id.restaurant.name} </Link></td>
+                //   <td>{review.menu_item_id.name}</td>
+                //   <td>
+                //     {review.rating}/5 <FaStar size="1rem" />{" "}
+                //   </td>
+                // </tr>
               ))
             ) : (
-              <h1>You haven't written any reviews.</h1>
+              <tr>You haven't written any reviews.</tr>
             )}
-          </tbody>
-        </Table>
-        <Button href="/review/restaurants">New Review</Button>
-        <Button href="/reviews">Reviews</Button>
+        
       </div>
     </div>
   );

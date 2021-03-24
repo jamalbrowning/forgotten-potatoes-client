@@ -1,13 +1,12 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
-export const Home = () => {
+
+export const Home = (props) => {
   const email = React.createRef();
   const password = React.createRef();
   const invalidDialog = React.createRef();
-  const history = useHistory();
-
+ 
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -26,9 +25,10 @@ export const Home = () => {
       .then((res) => {
         if ("valid" in res && res.valid && "token" in res) {
           localStorage.setItem("fp_token", res.token);
-          localStorage.setItem("fp_user_id", res.user_id);
-          history.push("/profile");
-          window.location.reload();
+          localStorage.setItem("user_id", res.user_id);
+          
+          console.log(localStorage.getItem("user_id"));
+          props.history.push("/profile");
         } else {
           invalidDialog.current.showModal();
         }
@@ -37,20 +37,22 @@ export const Home = () => {
 
   return (
     <main className="container--login">
-      <h1>Forgotten Potatoes</h1>
       <dialog className="dialog dialog--auth" ref={invalidDialog}>
         <div>Email or password was not valid.</div>
         <button
-          className="btn btn-danger button--close"
+          className="button--close"
           onClick={(e) => invalidDialog.current.close()}
         >
           Close
         </button>
       </dialog>
-      <section className="login-section">
-        <Form className="form--login" onSubmit={handleLogin}>
-          <h2 className="text-center">Please log in </h2>
+      <section>
+      
+        <form className="form--login text-center login-form" onSubmit={handleLogin}>
+          
+        <h3>Login</h3>
           <fieldset>
+            {/* <label htmlFor="inputEmail"> Email address </label> */}
             <input
               ref={email}
               type="email"
@@ -62,6 +64,7 @@ export const Home = () => {
             />
           </fieldset>
           <fieldset>
+            {/* <label htmlFor="inputPassword"> Password </label> */}
             <input
               ref={password}
               type="password"
@@ -76,17 +79,16 @@ export const Home = () => {
               textAlign: "center",
             }}
           >
-            <button className="btn btn-1 btn-sep icon-send" type="submit">
+            <button className="sign-in btn btn-primary" type="submit">
               Sign In
             </button>
           </fieldset>
-        </Form>
+          <button className="btn btn-dark link--register text-center" to="/register">
+        Not a member yet?
+      </button>
+        </form>
       </section>
-      <section>
-        <Link to="/register" className="link--register">
-          Don't Have an account? Click to register.
-        </Link>
-      </section>
+      
     </main>
   );
 };
