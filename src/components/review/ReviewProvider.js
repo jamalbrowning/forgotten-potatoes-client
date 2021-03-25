@@ -58,7 +58,7 @@ export const ReviewProvider = (props) => {
     
     .then(getReviews);
   };
-  
+ 
   const deleteReview = (id) => {
     return fetch(`http://localhost:8000/reviews/${id}`, {
       method: "DELETE",

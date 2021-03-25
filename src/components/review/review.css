@@ -1,0 +1,83 @@
+.review-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.review-body{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card{
+  margin: 10px 10px;
+  width: 300px;
+  
+}
+.add-container{
+  /* display: grid;
+  place-items: center; */
+  gap: 10%;
+  margin: 10px
+}
+.review-page{
+  background-color: rgb(59, 59, 59);
+  color: aliceblue;
+}
+.card-body{
+  padding: 0 !important;
+}
+.add-container{
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 10px;
+}
+.bottom-icons{
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+.review-form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-group-rating{
+  width: 20rem;
+}
+.form-group-comment{
+  width: 20rem;
+}
+
+.menuitem-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.menu-items{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.button-menu-item{
+  width: 25rem;
+  margin: 5px !important;
+}
+
+.form-control-comment{
+  height: 20rem;
+  width: 20rem;
+}
+.restaurant-list{
+  display: flex;
+  flex-direction: column;
+}

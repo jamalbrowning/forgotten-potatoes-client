@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ReviewContext } from "./ReviewProvider"
 import { Link } from 'react-router-dom'
+import { Button } from '@material-ui/core';
+
+import "./review.css"
+
 
 export const ReviewMenuItems = (props) => {
   const { menuItems, getMenuItemByRestId } = useContext(ReviewContext)
@@ -21,16 +25,21 @@ export const ReviewMenuItems = (props) => {
   }, [])
     
   return (
-    <div className="text-center justify-center align-items-center">
-      <h1>{restaurant.name}</h1>
-      <h1>Please select a menu item:</h1>
+    <div className="text-center menu-items">
+      <h2>{restaurant.name}</h2>
+      <h6>Please select a menu item:</h6>
+      <div className="menuitem-container">
       {
         menuItems && menuItems.length > 0 ? (
           menuItems.map((menuitem) => (
-            <h4><Link to={`/review/menuitem/${menuitem.id}`}>{menuitem.name}</Link></h4>
+            
+            <Button href={`/review/menuitem/${menuitem.id}`} variant="outlined" className="button-menu-item">{menuitem.name}</Button>
+          
+            
           ))
         ) : ('')
       }
+      </div>
     </div>
   )
 }

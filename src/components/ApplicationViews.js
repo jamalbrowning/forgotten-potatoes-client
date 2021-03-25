@@ -11,7 +11,6 @@ import { Reviews } from "./review/Reviews";
 import { SingleReview } from "./review/SingleReview";
 import { ReviewRestaurants } from "./review/ReviewRestaurants"
 import { ReviewMenuItems } from "./review/ReviewMenuItems"
-import { ReviewForm } from "./review/ReviewForm";
 import { Review } from "./review/Review"
 
 export const ApplicationViews = () => {
@@ -62,14 +61,7 @@ export const ApplicationViews = () => {
             return <ReviewMenuItems {...props} />
           }}/>
       
-         
-          <Route
-            exact
-            path="/new-review"
-            render= {(props) => {
-              return <ReviewForm {...props}  />;
-            }}
-          />
+        
           <Route
             exact
             path="/reviews"
