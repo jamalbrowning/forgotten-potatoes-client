@@ -20,7 +20,7 @@ export const Profile = (props) => {
     const userId = localStorage.getItem("user_id");
     getReviewsByUserId(userId);
   }, []);
-
+   
   return (
     <div className="review-container text-center">
         {/* <Button href="/reviews">Reviews</Button> */}
@@ -29,7 +29,7 @@ export const Profile = (props) => {
         
 
             {reviews && reviews.length > 0 ? (
-              reviews.map((review) => (
+              reviews.slice(0,2).map((review) => (
                 <Card className="profile-card">
                   <Card.Header className="header"><p>{review.menu_item_id.restaurant.name}</p>
                   <Button href={`/reviews/${review.id}`}>< PageviewIcon style={{ fontSize: 30 }}/></Button>
@@ -64,6 +64,7 @@ export const Profile = (props) => {
               </div>
               
             )}
+            <Button variant="outlined" href="/reviews">All Reviews</Button>
         
       </div>
     </div>

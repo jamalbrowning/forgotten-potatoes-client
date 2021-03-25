@@ -6,6 +6,8 @@ import { FaStar } from "react-icons/fa"
 import EditIcon from "@material-ui/icons/Edit";
 import { Fab } from "@material-ui/core";
 import Tooltip from '@material-ui/core/Tooltip';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
 
 
 
@@ -38,6 +40,11 @@ export const SingleReview = (props) => {
   }, [])
   
   return <div className="review-container">
+    <Tooltip title="back" aria-label="back">
+          <Fab size="small" href="/profile" color="primary" aria-label="back">
+          <ArrowBackIcon />
+          </Fab>
+        </Tooltip>
   {review && review ? 
   <div>
   <Card className="text-center">

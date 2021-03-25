@@ -9,6 +9,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import PageviewIcon from '@material-ui/icons/Pageview';
 
 import "./review.css";
 
@@ -39,7 +40,7 @@ export const Reviews = (props) => {
           </Fab>
         </Tooltip>
         <Tooltip title="back" aria-label="back">
-          <Fab size="small" href="/profile" color="primary" aria-label="add">
+          <Fab size="small" href="/profile" color="primary" aria-label="back">
           <ArrowBackIcon />
           </Fab>
         </Tooltip>
@@ -60,6 +61,10 @@ export const Reviews = (props) => {
                       {review.rating}/5 <FaStar size="1rem"></FaStar>
                     </Card.Text>
                     <div className="bottom-icons">
+                      <Fab href={`/reviews/${review.id}` } size="small">
+                      < PageviewIcon style={{ fontSize: 30 }}/>
+                      </Fab>
+                    
                     <Tooltip title="Edit Review" aria-label="edit">
                     <Fab
                       onClick={(e) =>
