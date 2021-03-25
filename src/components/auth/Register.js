@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./register.css"
 
+
 export const Register = (props) => {
   const firstName = React.createRef();
   const lastName = React.createRef();
@@ -57,63 +58,51 @@ export const Register = (props) => {
       <form className="form--login" onSubmit={handleRegister}>
         <h1 className="h3 mb-3 font-weight-normal">Register an account</h1>
         <fieldset>
-          <label htmlFor="firstName"> First Name </label>
           <input
             ref={firstName}
             type="text"
             name="firstName"
-            className="form-control"
+            className="form-control-register"
             placeholder="First name"
             required
             autoFocus
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="lastName"> Last Name </label>
           <input
             ref={lastName}
             type="text"
             name="lastName"
-            className="form-control"
-            placeholder="Last name"
+            className="form-control-register"            placeholder="Last name"
             required
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="inputEmail"> Email address </label>
           <input
             ref={email}
             type="email"
             name="email"
-            className="form-control"
-            placeholder="Email address"
+            className="form-control-register"            placeholder="Email address"
             required
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="inputPassword"> Password </label>
           <input
             ref={password}
             type="password"
             name="password"
-            className="form-control"
-            placeholder="Password"
+            className="form-control-register"            placeholder="Password"
             required
           />
         </fieldset>
         <fieldset>
-          <label htmlFor="verifyPassword"> Verify Password </label>
           <input
             ref={verifyPassword}
             type="password"
             name="verifyPassword"
-            className="form-control"
-            placeholder="Verify password"
+            className="form-control-register"            placeholder="Verify password"
             required
           />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="verifyPassword"> Verify Password </label>
         </fieldset>
         <fieldset
           style={{
@@ -124,10 +113,11 @@ export const Register = (props) => {
             Register
           </button>
         </fieldset>
-      </form>
-      <section className="link--register">
+        <section className="link-register">
         Already registered? <Link to="/login">Login</Link>
       </section>
+      </form>
+      
     </main>
   );
 };

@@ -9,7 +9,7 @@ export const NavBar = (props) => {
       <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         {localStorage.getItem("fp_token") !== null ? (
           <Navbar.Brand href="/profile"><img
-          src="potato.png"
+          src="https://i.ibb.co/F8yn53X/potato.png"
           width="30"
           height="30"
           className="d-inline-block align-top potato"

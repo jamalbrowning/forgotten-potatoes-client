@@ -77,3 +77,7 @@
   height: 20rem;
   width: 20rem;
 }
+.restaurant-list{
+  display: flex;
+  flex-direction: column;
+}
