@@ -9,9 +9,9 @@ import { ProfileProvider } from "./profile/ProfileProvider";
 import { ReviewProvider } from "./review/ReviewProvider";
 import { Reviews } from "./review/Reviews";
 import { SingleReview } from "./review/SingleReview";
-import { ReviewRestaurants } from "./review/ReviewRestaurants"
-import { ReviewMenuItems } from "./review/ReviewMenuItems"
-import { Review } from "./review/Review"
+import { ReviewRestaurants } from "./review/ReviewRestaurants";
+import { ReviewMenuItems } from "./review/ReviewMenuItems";
+import { Review } from "./review/Review";
 
 export const ApplicationViews = () => {
   return (
@@ -25,43 +25,46 @@ export const ApplicationViews = () => {
       />
 
       <ProfileProvider>
-          <Route
-            exact
-            path="/profile"
-            render={(props) => {
-              return <Profile {...props} history={props.history} />;
-            }}
-          />
-      
+        <Route
+          exact
+          path="/profile"
+          render={(props) => {
+            return <Profile {...props} history={props.history} />;
+          }}
+        />
 
         <ReviewProvider>
-
-            <Route 
-            exact path="/review/menuitem/:menuitemId"
+          <Route
+            exact
+            path="/review/menuitem/:menuitemId"
             render={(props) => {
-              return <Review {...props} />
-            }} />
-            <Route 
-            exact path="/reviews/:reviewId(\d+)/edit"
-            render={(props) => {
-              return <Review {...props} />
+              return <Review {...props} />;
             }}
-            />
+          />
+          <Route
+            exact
+            path="/reviews/:reviewId(\d+)/edit"
+            render={(props) => {
+              return <Review {...props} />;
+            }}
+          />
 
+          <Route
+            exact
+            path="/review/restaurants"
+            render={(props) => {
+              return <ReviewRestaurants {...props} />;
+            }}
+          />
 
-          <Route 
-          exact path="/review/restaurants"
-          render={(props) => {
-            return <ReviewRestaurants {...props} />
-          }}/>
+          <Route
+            exact
+            path="/review/restaurants/:restaurantId"
+            render={(props) => {
+              return <ReviewMenuItems {...props} />;
+            }}
+          />
 
-          <Route 
-          exact path="/review/restaurants/:restaurantId"
-          render={(props) => {
-            return <ReviewMenuItems {...props} />
-          }}/>
-      
-        
           <Route
             exact
             path="/reviews"
@@ -78,8 +81,6 @@ export const ApplicationViews = () => {
           />
         </ReviewProvider>
       </ProfileProvider>
-      
-      
     </>
   );
 };

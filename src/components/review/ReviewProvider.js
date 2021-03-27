@@ -4,11 +4,11 @@ export const ReviewContext = React.createContext();
 
 export const ReviewProvider = (props) => {
   const [reviews, setReviews] = useState({});
-  const [review,  setReview] = useState({});
+  const [review, setReview] = useState({});
   const [restaurants, setRestaurants] = useState({});
   const [restaurant, setRestaurant] = useState({});
-  const [ menuItems, setMenuItems ] = useState({});
-  const [menuItem, setMenuItem ] = useState({})
+  const [menuItems, setMenuItems] = useState({});
+  const [menuItem, setMenuItem] = useState({});
 
   const getReviews = () => {
     return fetch("http://localhost:8000/reviews", {
@@ -34,7 +34,7 @@ export const ReviewProvider = (props) => {
     return fetch("http://localhost:8000/reviews", {
       method: "POST",
       headers: {
-        "Authorization": `Token ${localStorage.getItem("fp_token")}`,
+        Authorization: `Token ${localStorage.getItem("fp_token")}`,
         "Content-Type": "application/json",
         Accept: "application/json",
       },
@@ -44,21 +44,19 @@ export const ReviewProvider = (props) => {
       .then(getReviews);
   };
 
-  const updateReview = review => {
-    console.log('here is the update review', review)
+  const updateReview = (review) => {
+    console.log("here is the update review", review);
     return fetch(`http://localhost:8000/reviews/${review.id}`, {
       method: "PUT",
       headers: {
-        "Authorization": `Token ${localStorage.getItem("fp_token")}`,
+        Authorization: `Token ${localStorage.getItem("fp_token")}`,
         "Content-Type": "application/json",
       },
-      
+
       body: JSON.stringify(review),
-    })
-    
-    .then(getReviews);
+    }).then(getReviews);
   };
- 
+
   const deleteReview = (id) => {
     return fetch(`http://localhost:8000/reviews/${id}`, {
       method: "DELETE",
@@ -81,9 +79,8 @@ export const ReviewProvider = (props) => {
       headers: {
         Authorization: `Token ${localStorage.getItem("fp_token")}`,
       },
-    }).then((res) => res.json()); 
-    
-  }
+    }).then((res) => res.json());
+  };
 
   const getRestaurants = () => {
     return fetch("http://localhost:8000/restaurants", {
@@ -103,7 +100,7 @@ export const ReviewProvider = (props) => {
     })
       .then((res) => res.json())
       .then(setMenuItems);
-  }
+  };
 
   const getMenuItemByRestId = (id) => {
     return fetch(`http://localhost:8000/menuitems?restaurant=${id}`, {
@@ -120,12 +117,9 @@ export const ReviewProvider = (props) => {
       headers: {
         Authorization: `Token ${localStorage.getItem("fp_token")}`,
       },
-    }).then((res) => res.json()); 
-    
-  }
+    }).then((res) => res.json());
+  };
 
-
-  
   return (
     <ReviewContext.Provider
       value={{

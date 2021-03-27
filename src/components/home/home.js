@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
 export const Home = (props) => {
   const email = React.createRef();
   const password = React.createRef();
   const invalidDialog = React.createRef();
- 
+
   const handleLogin = (e) => {
     e.preventDefault();
 
@@ -26,7 +25,7 @@ export const Home = (props) => {
         if ("valid" in res && res.valid && "token" in res) {
           localStorage.setItem("fp_token", res.token);
           localStorage.setItem("user_id", res.user_id);
-          
+
           console.log(localStorage.getItem("user_id"));
           props.history.push("/profile");
         } else {
@@ -47,10 +46,11 @@ export const Home = (props) => {
         </button>
       </dialog>
       <section>
-      
-        <form className="form--login text-center login-form" onSubmit={handleLogin}>
-          
-        <h3>Login</h3>
+        <form
+          className="form--login text-center login-form"
+          onSubmit={handleLogin}
+        >
+          <h3>Login</h3>
           <fieldset>
             {/* <label htmlFor="inputEmail"> Email address </label> */}
             <input
@@ -84,11 +84,10 @@ export const Home = (props) => {
             </button>
           </fieldset>
           <section className="link--register">
-        Not registered? <Link to="/register">Sign up</Link>
-      </section>
+            Not registered? <Link to="/register">Sign up</Link>
+          </section>
         </form>
       </section>
-      
     </main>
   );
 };

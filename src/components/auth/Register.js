@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./register.css"
-
+import "./register.css";
 
 export const Register = (props) => {
   const firstName = React.createRef();
@@ -73,7 +72,8 @@ export const Register = (props) => {
             ref={lastName}
             type="text"
             name="lastName"
-            className="form-control-register"            placeholder="Last name"
+            className="form-control-register"
+            placeholder="Last name"
             required
           />
         </fieldset>
@@ -82,7 +82,8 @@ export const Register = (props) => {
             ref={email}
             type="email"
             name="email"
-            className="form-control-register"            placeholder="Email address"
+            className="form-control-register"
+            placeholder="Email address"
             required
           />
         </fieldset>
@@ -91,7 +92,8 @@ export const Register = (props) => {
             ref={password}
             type="password"
             name="password"
-            className="form-control-register"            placeholder="Password"
+            className="form-control-register"
+            placeholder="Password"
             required
           />
         </fieldset>
@@ -100,7 +102,8 @@ export const Register = (props) => {
             ref={verifyPassword}
             type="password"
             name="verifyPassword"
-            className="form-control-register"            placeholder="Verify password"
+            className="form-control-register"
+            placeholder="Verify password"
             required
           />
         </fieldset>
@@ -114,10 +117,9 @@ export const Register = (props) => {
           </button>
         </fieldset>
         <section className="link-register">
-        Already registered? <Link to="/login">Login</Link>
-      </section>
+          Already registered? <Link to="/login">Login</Link>
+        </section>
       </form>
-      
     </main>
   );
 };

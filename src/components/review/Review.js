@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ReviewContext } from "./ReviewProvider";
 import { Fab } from "@material-ui/core";
-import Tooltip from '@material-ui/core/Tooltip';
-import PublishIcon from '@material-ui/icons/Publish';
+import Tooltip from "@material-ui/core/Tooltip";
+import PublishIcon from "@material-ui/icons/Publish";
 
 import "./review.css";
 
@@ -73,57 +73,58 @@ export const Review = (props) => {
           <div className="form-group-comment">
             <label htmlFor="maker">Comment: </label>
             <textarea
-            type="text"
-            name="comment"
-            required
-            autoFocus
-            className="form-control-comment"
-            value={currentReview.comment}
-            onChange={handleControlledInputChange}>
-
-            </textarea>
+              type="text"
+              name="comment"
+              required
+              autoFocus
+              className="form-control-comment"
+              value={currentReview.comment}
+              onChange={handleControlledInputChange}
+            ></textarea>
           </div>
         </fieldset>
         {"reviewId" in props.match.params ? (
-        <Tooltip title="Edit Review" aria-label="add">
-        <Fab 
-        size="small" 
-        href="/review/restaurants" 
-        color="primary" 
-        aria-label="update"
-        onClick={(evt) => {
-          evt.preventDefault();
-          updateReview({
-            id: parseInt(props.match.params.reviewId),
-            rating: parseInt(currentReview.rating),
-            comment: currentReview.comment,
-            menu_item_id: currentReview.menu_item_id.id,
-            user: parseInt(localStorage.getItem("user_id")),
-          }).then(() => props.history.push("/reviews"));
-        }}>
-          <PublishIcon />
-        </Fab>
-      </Tooltip>
+          <Tooltip title="Edit Review" aria-label="add">
+            <Fab
+              size="small"
+              href="/review/restaurants"
+              color="primary"
+              aria-label="update"
+              onClick={(evt) => {
+                evt.preventDefault();
+                updateReview({
+                  id: parseInt(props.match.params.reviewId),
+                  rating: parseInt(currentReview.rating),
+                  comment: currentReview.comment,
+                  menu_item_id: currentReview.menu_item_id.id,
+                  user: parseInt(localStorage.getItem("user_id")),
+                }).then(() => props.history.push("/reviews"));
+              }}
+            >
+              <PublishIcon />
+            </Fab>
+          </Tooltip>
         ) : (
           <Tooltip title="Add Review" aria-label="add">
-<Fab 
-size="small" 
-href="/review/restaurants" 
-color="primary" 
-aria-label="Add"
-onClick={(evt) => {
-  evt.preventDefault();
+            <Fab
+              size="small"
+              href="/review/restaurants"
+              color="primary"
+              aria-label="Add"
+              onClick={(evt) => {
+                evt.preventDefault();
 
-  createReview({
-    user: localStorage.getItem("user_id"),
-    rating: currentReview.rating,
-    comment: currentReview.comment,
-    menu_item_id: menuItem.id,
-  }).then(() => props.history.push("/reviews"));
-}}>
-  <PublishIcon />
-</Fab>
-</Tooltip>
+                createReview({
+                  user: localStorage.getItem("user_id"),
+                  rating: currentReview.rating,
+                  comment: currentReview.comment,
+                  menu_item_id: menuItem.id,
+                }).then(() => props.history.push("/reviews"));
+              }}
+            >
+              <PublishIcon />
+            </Fab>
+          </Tooltip>
         )}
       </form>
     </div>

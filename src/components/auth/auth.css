@@ -18,7 +18,8 @@ fieldset {
   margin: 5rem auto;
   text-align: center;
   padding-top: 20px;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 }
 
 .form--login > fieldset > input[type="email"],
@@ -67,26 +68,28 @@ fieldset {
   border: 1px solid gray;
   border-radius: 5px;
 }
-.sign-in{
+.sign-in {
   width: 20rem;
 }
 
-.link--register{
-  width: 20rem; 
+.link--register {
+  width: 20rem;
 }
 
-.link--register:hover{
+.link--register:hover {
   color: red;
 }
 
-main{
+main {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.548),
+    rgb(212, 212, 212)
+  );
 
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.548), rgb(212, 212, 212));
-
-  
   color: rgb(0, 0, 0);
 
-  background-size:auto;
+  background-size: auto;
   height: 50rem;
   display: flex;
   justify-content: center;
@@ -97,14 +100,14 @@ main{
   /* padding-top: 10rem; */
   height: 25rem;
   width: 25rem;
-  background-color:rgba(255, 255, 255, 0.6);;
+  background-color: rgba(255, 255, 255, 0.6);
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
-.welcome{
+.welcome {
   color: rgb(0, 0, 0);
-  font-family: 'Anton', sans-serif;
+  font-family: "Anton", sans-serif;
 }
