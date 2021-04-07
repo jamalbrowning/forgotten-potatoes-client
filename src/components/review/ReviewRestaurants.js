@@ -9,11 +9,27 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import "./review.css";
 
 export const ReviewRestaurants = (props) => {
-  const { restaurants, getRestaurants } = useContext(ReviewContext);
+  const { restaurants, getRestaurantsbyUserId } = useContext(ReviewContext);
+
+  // const createRestaurant = (restaurant) => {
+  //   return fetch("http://localhost:8000/restaurants", {
+  //     method: "POST",
+  //     headers: {
+  //       Authorization: `Token ${localStorage.getItem("fp_token")}`,
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //     body: JSON.stringify(restaurant),
+  //   })
+  //     .then((response) => response.json())
+  //     // .then(getRestaurants);
+  // };
 
   useEffect(() => {
-    getRestaurants();
+    const userId = localStorage.getItem("user_id");
+    getRestaurantsbyUserId(userId);
   }, []);
+
   console.log("these are rests", restaurants.results);
   return (
     <div className="restaurant-list text-center justify-center align-items-center ">
