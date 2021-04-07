@@ -29,8 +29,7 @@ export const ReviewRestaurants = (props) => {
     const userId = localStorage.getItem("user_id");
     getRestaurantsbyUserId(userId);
   }, []);
-
-  console.log("these are rests", restaurants.results);
+  console.log("these are rests", restaurants);
   return (
     <div className="restaurant-list text-center justify-center align-items-center ">
       <h1>Please select a restaurant:</h1>
@@ -39,8 +38,8 @@ export const ReviewRestaurants = (props) => {
           <ArrowBackIcon />
         </Fab>
       </Tooltip>
-      {restaurants.results && restaurants.results.length > 0
-        ? restaurants.results.map((restaurant) => (
+      {restaurants && restaurants.length > 0
+        ? restaurants.map((restaurant) => (
             <Button
               href={`/review/restaurants/${restaurant.id}`}
               variant="outlined"

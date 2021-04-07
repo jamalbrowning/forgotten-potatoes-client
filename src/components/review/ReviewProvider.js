@@ -88,6 +88,7 @@ export const ReviewProvider = (props) => {
         Authorization: `Token ${localStorage.getItem("fp_token")}`,
       },
     })
+      // .then((res) => console.log(res))
       .then((res) => res.json())
       .then(setRestaurants);
   };
