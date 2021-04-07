@@ -14,7 +14,7 @@ export const ReviewRestaurants = (props) => {
   useEffect(() => {
     getRestaurants();
   }, []);
-  console.log("these are rests", restaurants.results);
+  console.log("these are rests", restaurants);
   return (
     <div className="restaurant-list text-center justify-center align-items-center ">
       <h1>Please select a restaurant:</h1>
@@ -23,8 +23,8 @@ export const ReviewRestaurants = (props) => {
           <ArrowBackIcon />
         </Fab>
       </Tooltip>
-      {restaurants.results && restaurants.results.length > 0
-        ? restaurants.results.map((restaurant) => (
+      {restaurants && restaurants.length > 0
+        ? restaurants.map((restaurant) => (
             <Button
               href={`/review/restaurants/${restaurant.id}`}
               variant="outlined"
