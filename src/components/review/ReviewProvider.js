@@ -82,8 +82,8 @@ export const ReviewProvider = (props) => {
     }).then((res) => res.json());
   };
 
-  const getRestaurants = () => {
-    return fetch("http://localhost:8000/restaurants", {
+  const getRestaurantsbyUserId = (id) => {
+    return fetch(`http://localhost:8000/restaurants?user=${id}`, {
       headers: {
         Authorization: `Token ${localStorage.getItem("fp_token")}`,
       },
@@ -132,7 +132,7 @@ export const ReviewProvider = (props) => {
         menuItem,
         getMenuItemById,
         getMenuItems,
-        getRestaurants,
+        getRestaurantsbyUserId,
         getRestbyId,
         getReviewsByUserId,
         getMenuItemByRestId,

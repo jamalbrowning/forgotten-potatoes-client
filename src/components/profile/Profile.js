@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import { Fab } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
+import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 
 export const Profile = (props) => {
   const { reviews, getReviewsByUserId } = useContext(ProfileContext);
@@ -20,6 +21,23 @@ export const Profile = (props) => {
   return (
     <div className="review-container text-center">
       {/* <Button href="/reviews">Reviews</Button> */}
+      <div className="add-container">
+          <Tooltip title="Add Review" aria-label="add">
+            <Fab
+              size="small"
+              href="/review/restaurants"
+              color="primary"
+              aria-label="add"
+            >
+              <AddIcon />
+            </Fab>
+          </Tooltip>
+          <Tooltip title="back" aria-label="back">
+            <Fab size="small" href="/profile" color="primary" aria-label="back">
+              <ArrowBackIcon />
+            </Fab>
+          </Tooltip>
+        </div>
       <h3 className="text-center profile-header">Recent Reviews</h3>
       <div className="preview-container">
         {reviews && reviews.length > 0 ? (
@@ -38,6 +56,7 @@ export const Profile = (props) => {
                   </p>
                 </Card.Title>
                 <Card.Text>
+                  
                   {review.rating}/5 <FaStar size="1rem" />{" "}
                 </Card.Text>
               </Card.Body>

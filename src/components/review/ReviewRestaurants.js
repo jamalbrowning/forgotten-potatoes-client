@@ -5,14 +5,30 @@ import { Button } from "@material-ui/core";
 import Tooltip from "@material-ui/core/Tooltip";
 import { Fab } from "@material-ui/core";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
+import AddIcon from "@material-ui/icons/Add";
 
 import "./review.css";
 
 export const ReviewRestaurants = (props) => {
-  const { restaurants, getRestaurants } = useContext(ReviewContext);
+  const { restaurants, getRestaurantsbyUserId } = useContext(ReviewContext);
+
+  const createRestaurant = (restaurant) => {
+    return fetch("http://localhost:8000/restaurants", {
+      method: "POST",
+      headers: {
+        Authorization: `Token ${localStorage.getItem("fp_token")}`,
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(restaurant),
+    })
+      .then((response) => response.json())
+      // .then(getRestaurants);
+  };
 
   useEffect(() => {
-    getRestaurants();
+    const userId = localStorage.getItem("user_id");
+    getRestaurantsbyUserId(userId);
   }, []);
   console.log("these are rests", restaurants);
   return (
@@ -23,6 +39,16 @@ export const ReviewRestaurants = (props) => {
           <ArrowBackIcon />
         </Fab>
       </Tooltip>
+      <Tooltip title="Add Review" aria-label="add">
+            <Fab
+              size="small"
+              href="/review/restaurants/create"
+              color="primary"
+              aria-label="add"
+            >
+              <AddIcon />
+            </Fab>
+          </Tooltip>
       {restaurants && restaurants.length > 0
         ? restaurants.map((restaurant) => (
             <Button
