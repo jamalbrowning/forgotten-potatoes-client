@@ -56,6 +56,7 @@ export const Profile = (props) => {
                   </p>
                 </Card.Title>
                 <Card.Text>
+                  
                   {review.rating}/5 <FaStar size="1rem" />{" "}
                 </Card.Text>
               </Card.Body>
