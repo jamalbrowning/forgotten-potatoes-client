@@ -1,4 +1,4 @@
-import { React, useContext, useEffect } from "react";
+import { React, useContext, useEffect, useState } from "react";
 import { ReviewContext } from "./ReviewProvider";
 
 import { Card, Button } from "react-bootstrap";
@@ -15,6 +15,10 @@ import "./review.css";
 
 export const Reviews = (props) => {
   const { reviews, getReviewsByUserId } = useContext(ReviewContext);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     const userId = localStorage.getItem("user_id");
@@ -38,7 +42,7 @@ export const Reviews = (props) => {
               color="primary"
               aria-label="add"
             >
-              <AddIcon />
+              <AddIcon/>
             </Fab>
           </Tooltip>
           <Tooltip title="back" aria-label="back">

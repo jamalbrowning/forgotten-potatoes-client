@@ -12,6 +12,7 @@ import { SingleReview } from "./review/SingleReview";
 import { ReviewRestaurants } from "./review/ReviewRestaurants";
 import { ReviewMenuItems } from "./review/ReviewMenuItems";
 import { Review } from "./review/Review";
+import { AddRest } from "./review/AddRest"
 
 export const ApplicationViews = () => {
   return (
@@ -34,6 +35,7 @@ export const ApplicationViews = () => {
         />
 
         <ReviewProvider>
+        
           <Route
             exact
             path="/review/menuitem/:menuitemId"
@@ -57,14 +59,14 @@ export const ApplicationViews = () => {
             }}
           />
 
-          <Route
+          
+<Route
             exact
-            path="/review/restaurants/:restaurantId"
+            path="/review/restaurants/create"
             render={(props) => {
-              return <ReviewMenuItems {...props} />;
+              return <AddRest {...props} />;
             }}
           />
-
           <Route
             exact
             path="/reviews"
@@ -77,6 +79,13 @@ export const ApplicationViews = () => {
             path="/reviews/:reviewId"
             render={(props) => {
               return <SingleReview {...props} />;
+            }}
+          />
+          <Route
+            exact
+            path="/review/menuItems/:restaurantId"
+            render={(props) => {
+              return <ReviewMenuItems {...props} />;
             }}
           />
         </ReviewProvider>
